@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <title>Sample extension HFT</title>
-</head>
+  </head>
 
-<body>
-    <p id="jokeElement">This is a sample chrome extension</p>
-</body>
+  <body>
+    <h3>Todo List</h3>
+    <div class="additem">
+      <input type="text" id="input" />
+      <button>add item</button>
+    </div>
+    <ul class="todo-items"></ul>
 
+    <script src="popup.js"></script>
+  </body>
 </html>
