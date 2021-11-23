@@ -9,25 +9,58 @@ function fetchAll() {
     // add to list
     let list = document.getElementById('saved')
     list.innerHTML = ""
-    retrievedData.forEach(el => {
-        let li = document.createElement('li')
-        li.innerText = el
-        // let item = `<li>${el}</li>`
-        list.appendChild(li)
+    var newItemHTML = "";
+    retrievedData.forEach((el, idx) => {
+        newItemHTML +=
+            `<li data-itemindex=${idx}>
+            <span><a href=${el.url}>${el.name}</a></span>
+            <span class="item-delete">delete</span>
+            </li>`
     });
+    list.innerHTML = newItemHTML
+
+    var deletelist = document.querySelectorAll(".item-delete");
+    for (var i = 0; i < deletelist.length; i++) {
+        deletelist[i].addEventListener("click", function () {
+            var index = this.parentNode.dataset.itemindex;
+            itemDelete(index);
+        });
+    }
+}
+
+function itemDelete(index) {
+    const itemStorage = localStorage.getItem("bookmarks");
+    const itemArr = JSON.parse(itemStorage);
+
+    itemArr.splice(index, 1);
+    saveItems(itemArr);
+
+    fetchAll()
 }
 
 // Click save button
-document.getElementById('id_save').onclick = function () {
+document.getElementById('id_save').onclick = () => {
     var retrievedData = JSON.parse(localStorage.getItem('bookmarks'))
     if (retrievedData == null) {
         retrievedData = []
     }
-    let currItem = document.getElementById('add-new').value
-    console.log(currItem)
-    retrievedData.push(currItem)
-    localStorage.setItem("bookmarks", JSON.stringify(retrievedData));
-    fetchAll();
+
+    chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
+        let url = tabs[0].url;
+        let name = document.getElementById('add-new').value
+        let obj = {
+            name: name.length > 0 ? name : url,
+            url: url
+        }
+        retrievedData.push(obj)
+        localStorage.setItem("bookmarks", JSON.stringify(retrievedData));
+        fetchAll();
+    });
 }
 
-fetchAll();
+function saveItems(obj) {
+    const itemJson = JSON.stringify(obj);
+    localStorage.setItem("bookmarks", itemJson);
+}
+
+fetchAll()

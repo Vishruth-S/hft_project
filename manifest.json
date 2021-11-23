@@ -11,6 +11,7 @@
         "128": "temp_logo.png"
     },
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "tabs"
     ]
 }
