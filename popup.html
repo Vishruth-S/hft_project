@@ -13,12 +13,38 @@
   </head>
 
   <body>
-    <h3>Todo List</h3>
-    <div class="additem">
-      <input type="text" id="input" />
-      <button>add item</button>
+    <h3>Resources</h3>
+
+    <div class="container">
+        <div class="tab">
+            <button class="tablinks bookmark">Book Marks</li>
+            <button class="tablinks todo">Todo List</li>
+            <button class="tablinks notes">Notes</li>
+        </div>
+
+        <div class="tabcontent" id="bookmark">
+            <div class="addNewBookmark">
+                <input type="text" id="bookmarkInput" />
+                <button id="bookmarkButton">Add</button>
+            </div>         
+            <ul id="bookmark-list"></ul>
+        </div>
+        <div class="tabcontent" id="todo">
+            <div class="addNewTodoitem">
+              <div id="todo-form">
+                <input type="text" id="todoInput" placeholder="todo"/>
+                <!-- <input type="text" id="todoInput" placeholder="Company"/>
+                <input type="text" id="todoInput" placeholder="deadline"/> -->
+              </div>
+              <button id="todoButton">Add New Item</button>
+            </div>
+            <ul class="todo-items-list"></ul>
+        </div>
+        <div class="tabcontent" id="notes">
+            note body
+        </div>
     </div>
-    <ul class="todo-items"></ul>
+    
 
     <script src="popup.js"></script>
   </body>

@@ -1,6 +1,29 @@
 body {
   width: 300px;
+  height: 200px;
 }
+
+.tab {
+  display: block;
+}
+.tab button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+.tab button:hover {
+  background-color: #ddd;
+}
+.tab button.active {
+  background-color: #ccc;
+}
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+}
+
 .material-icons {
   font-size: 15px;
 }
@@ -29,6 +52,6 @@ li div .itemDelete {
 li.done .item {
   text-decoration: line-through;
 }
-.additem button {
+.addNewTodoitem button {
   cursor: pointer;
 }
