@@ -12,39 +12,41 @@ function fetchAll() {
     var newItemHTML = ""
     for (const [key, value] of Object.entries(retrievedData)) {
         newItemHTML +=
-            `<li>
-            <span><a href='/display.html?resourcename=${key}'>${key}</a></span>
+            `<li id=${key}>
+                <span><a href='/display.html?resourcename=${key}'>${key}</a></span>
+                <span class="delete-resources">delete</span>
             </li>`
     }
     list.innerHTML = newItemHTML
 
+    var deletelist = document.querySelectorAll(".delete-resources");
+    for (var i = 0; i < deletelist.length; i++) {
+        deletelist[i].addEventListener("click", function () {
+            var id = this.parentNode.id;
+            itemDelete(id);
+        });
+    }
+
 }
 
-// function itemDelete(index) {
-//     const itemStorage = localStorage.getItem("bookmarks");
-//     const itemArr = JSON.parse(itemStorage);
+function itemDelete(id) {
+    const itemStorage = JSON.parse(localStorage.getItem("allResources"))
+    delete itemStorage[id]
+    localStorage.setItem("allResources", JSON.stringify(itemStorage));
+    fetchAll()
+}
 
-//     itemArr.splice(index, 1);
-//     saveItems(itemArr);
+document.getElementById('save-new').onclick = () => {
+    var retrievedData = JSON.parse(localStorage.getItem('allResources'))
+    if (retrievedData == null) {
+        retrievedData = {}
+    }
+    let name = document.getElementById('add-new').value
+    name = name.replace(/ /g, "_")
+    retrievedData[name] = []
+    localStorage.setItem("allResources", JSON.stringify(retrievedData));
+    fetchAll();
+}
 
-//     fetchAll()
-// }
-
-// Click save button
-// document.getElementById('save-new').onclick = () => {
-//     var retrievedData = JSON.parse(localStorage.getItem('allResources'))
-//     if (retrievedData == null) {
-//         retrievedData = {}
-//     }
-//     let name = document.getElementById('add-new').value
-//     retrievedData[name] = []
-//     localStorage.setItem("allResources", JSON.stringify(retrievedData));
-//     fetchAll();
-// }
-
-// function saveItems(obj) {
-//     const itemJson = JSON.stringify(obj);
-//     localStorage.setItem("bookmarks", itemJson);
-// }
 
 fetchAll()

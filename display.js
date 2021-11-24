@@ -51,11 +51,12 @@ document.getElementById('save-new-resource').onclick = () => {
     chrome.windows.getCurrent(w => {
         chrome.tabs.query({ active: true, windowId: w.id }, tabs => {
             let url = tabs[0].url;
+            let title = tabs[0].title
             let nameInput = document.getElementById('add-new-resource')
             let name = nameInput.value
             nameInput.value = ''
             let obj = {
-                name: name.length > 0 ? name : url,
+                name: name.length > 0 ? name : title,
                 url: url
             }
             let params = (new URL(document.location)).searchParams;
