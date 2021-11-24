@@ -1,66 +1,50 @@
 // Called when popup.html is loaded.
 function fetchAll() {
-    // retreive data
-    var retrievedData = JSON.parse(localStorage.getItem('bookmarks'))
+    // // retreive data
+    var retrievedData = JSON.parse(localStorage.getItem('allResources'))
     if (retrievedData == null) {
-        retrievedData = []
+        retrievedData = {}
     }
 
-    // add to list
-    let list = document.getElementById('saved')
+    // // add to list
+    let list = document.getElementById('all-resources')
     list.innerHTML = ""
-    var newItemHTML = "";
-    retrievedData.forEach((el, idx) => {
+    var newItemHTML = ""
+    for (const [key, value] of Object.entries(retrievedData)) {
         newItemHTML +=
-            `<li data-itemindex=${idx}>
-            <span><a href=${el.url}>${el.name}</a></span>
-            <span class="item-delete">delete</span>
+            `<li>
+            <span><a href='/display.html?resourcename=${key}'>${key}</a></span>
             </li>`
-    });
+    }
     list.innerHTML = newItemHTML
 
-    var deletelist = document.querySelectorAll(".item-delete");
-    for (var i = 0; i < deletelist.length; i++) {
-        deletelist[i].addEventListener("click", function () {
-            var index = this.parentNode.dataset.itemindex;
-            itemDelete(index);
-        });
-    }
 }
 
-function itemDelete(index) {
-    const itemStorage = localStorage.getItem("bookmarks");
-    const itemArr = JSON.parse(itemStorage);
+// function itemDelete(index) {
+//     const itemStorage = localStorage.getItem("bookmarks");
+//     const itemArr = JSON.parse(itemStorage);
 
-    itemArr.splice(index, 1);
-    saveItems(itemArr);
+//     itemArr.splice(index, 1);
+//     saveItems(itemArr);
 
-    fetchAll()
-}
+//     fetchAll()
+// }
 
 // Click save button
-document.getElementById('id_save').onclick = () => {
-    var retrievedData = JSON.parse(localStorage.getItem('bookmarks'))
-    if (retrievedData == null) {
-        retrievedData = []
-    }
+// document.getElementById('save-new').onclick = () => {
+//     var retrievedData = JSON.parse(localStorage.getItem('allResources'))
+//     if (retrievedData == null) {
+//         retrievedData = {}
+//     }
+//     let name = document.getElementById('add-new').value
+//     retrievedData[name] = []
+//     localStorage.setItem("allResources", JSON.stringify(retrievedData));
+//     fetchAll();
+// }
 
-    chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
-        let url = tabs[0].url;
-        let name = document.getElementById('add-new').value
-        let obj = {
-            name: name.length > 0 ? name : url,
-            url: url
-        }
-        retrievedData.push(obj)
-        localStorage.setItem("bookmarks", JSON.stringify(retrievedData));
-        fetchAll();
-    });
-}
-
-function saveItems(obj) {
-    const itemJson = JSON.stringify(obj);
-    localStorage.setItem("bookmarks", itemJson);
-}
+// function saveItems(obj) {
+//     const itemJson = JSON.stringify(obj);
+//     localStorage.setItem("bookmarks", itemJson);
+// }
 
 fetchAll()
