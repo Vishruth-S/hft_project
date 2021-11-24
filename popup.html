@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample extension HFT</title>
+    <meta charset="utf-8">
 </head>
 
-<body>
-    <p id="jokeElement">This is a sample chrome extension</p>
+<body style="min-width:250px;min-height:200px">
+    <ul id="job-tasks">
+
+    </ul>
+    <input type="text" id="new-job-title" />
+    <input type="date" id="new-job-date" />
+    <input type="button" id="new-job-save" value="Save">
+    <script src="popup.js"></script>
 </body>
 
 </html>
