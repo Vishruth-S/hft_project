@@ -1,5 +1,10 @@
 document.getElementById("todo-form").style.display = "none";
 
+if (document.getElementById("compName") == "undefined")
+  document.getElementById("compName").style.display = "none";
+if (document.getElementById("due") == "undefined")
+  document.getElementById("due").style.display = "none";
+
 //displaying Active tab content
 document.querySelectorAll(".tablinks").forEach((element) => {
   element.addEventListener("click", function () {
@@ -21,10 +26,33 @@ document.querySelectorAll(".tablinks").forEach((element) => {
   });
 });
 
+function calcRemainingTime(end_time) {
+  let end = new Date(end_time);
+  let curr = new Date();
+  let t = end - curr;
+
+  console.log(end - curr);
+
+  if (t >= 0) {
+    let days = Math.floor(t / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let mins = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+    console.log(days, hours, mins);
+    let obj = {
+      d: days,
+      h: hours,
+      m: mins,
+    };
+    return obj;
+  }
+}
+
 //adding new TODO item
 document.getElementById("todoButton").addEventListener("click", function () {
   document.getElementById("todo-form").style.display = "block";
-  const taskName = document.querySelector(".addNewTodoitem input").value;
+  const taskName = document.getElementById("todoInput_taskName").value;
+  const company = document.getElementById("todoInput_company").value;
+  const due = document.getElementById("todoInput_due").value;
 
   if (taskName != "") {
     var todoList = JSON.parse(localStorage.getItem("todo-items-list"));
@@ -32,8 +60,15 @@ document.getElementById("todoButton").addEventListener("click", function () {
       todoList = [];
     }
 
+    let rt = calcRemainingTime(due);
+
     var newTodoObj = {
       task: taskName,
+      company: company.length > 0 ? company : "",
+      due: due.length > 0 ? due : "",
+      days: rt.d,
+      hrs: rt.h,
+      mins: rt.m,
       status: 0,
     };
     todoList.push(newTodoObj);
@@ -41,7 +76,9 @@ document.getElementById("todoButton").addEventListener("click", function () {
     fetchItems();
   }
 
-  document.getElementById("todoInput").value = "";
+  document.getElementById("todoInput_taskName").value = "";
+  document.getElementById("todoInput_company").value = "";
+  document.getElementById("todoInput_due").value = "";
 });
 
 //fetches all todo items from local storage
@@ -60,7 +97,10 @@ function fetchItems() {
     if (todo.status == 1) status = "class=done";
 
     newItemHTML += `<li data-itemindex="${i}" ${status}>
-        <span class="item"> ${todo.task}</span>
+        <p class="item"> ${todo.task}</p>        
+        <p class="item" id=""compName"> ${todo.company}</p>  
+        <p>${todo.days} days ${todo.hrs} hours ${todo.mins} mins</p>                              
+                                         
         <div>
           <span class="itemComplete">        
             <span class="material-icons tick">task_alt</span>
