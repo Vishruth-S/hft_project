@@ -126,9 +126,11 @@ function fetchItems() {
   for (var i = 0; i < deletelist.length; i++) {
     deletelist[i].addEventListener("click", function () {
       var index = this.parentNode.parentNode.dataset.itemindex;
-      itemDelete(index);
+      todo_itemDelete(index);
     });
   }
+
+  document.getElementById("todoInput_due").min = new Date().getFullYear() + "-" + parseInt(new Date().getMonth() + 1) + "-" + new Date().getDate()
 }
 
 //function to handle onclick event of save/done button
@@ -146,7 +148,7 @@ function itemComplete(index) {
 }
 
 //function to handle onclick event of delete button
-function itemDelete(index) {
+function todo_itemDelete(index) {
   const itemStorage = localStorage.getItem("todo-items-list");
   const itemArr = JSON.parse(itemStorage);
 
