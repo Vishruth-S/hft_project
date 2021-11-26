@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <title>Sample extension HFT</title>
-</head>
+  </head>
 
-<body>
-    <p id="jokeElement">This is a sample chrome extension</p>
-</body>
+  <body>
+    <h3>Resources</h3>
 
+    <div class="container">
+        <div class="tab">
+            <button class="tablinks bookmark">Book Marks</li>
+            <button class="tablinks todo">Todo List</li>
+            <button class="tablinks notes">Notes</li>
+        </div>
+
+        <div class="tabcontent" id="bookmark">
+            <div class="addNewBookmark">
+                <input type="text" id="bookmarkInput" />
+                <button id="bookmarkButton">Add</button>
+            </div>         
+            <ul id="bookmark-list"></ul>
+        </div>
+        <div class="tabcontent" id="todo">
+            <div class="addNewTodoitem">
+              <div id="todo-form">
+                <input type="text" id="todoInput_taskName" placeholder="todo"/>
+                <input type="text" id="todoInput_company" placeholder="Company"/>
+                <input type="date" id="todoInput_due" placeholder="due date"/>
+              </div>
+              <button id="todoButton">Add New Item</button>
+            </div>
+            <ul class="todo-items-list"></ul>
+        </div>
+        <div class="tabcontent" id="notes">
+            note body
+        </div>
+    </div>
+    
+
+    <script src="popup.js"></script>
+  </body>
 </html>
