@@ -1,42 +1,40 @@
 //adding new item
-document
-    .querySelector(".additem button")
-    .addEventListener("click", function () {
-        const taskName = document.querySelector(".additem input").value;
-        if (taskName != "") {
-            const itemStorage = localStorage.getItem("todo-items");
-            console.log(itemStorage);
 
-            if (itemStorage == null) {
-                console.log("inside if");
-                saveItems([{ task: taskName, status: 0 }]);
-            } else {
-                console.log("inside else");
+document.getElementById("todoButton").addEventListener("click", function () {
+  const taskName = document.getElementById("todoInput").value;
 
-                const itemArr = JSON.parse(itemStorage);
-                itemArr.push({ task: taskName, status: 0 });
-                saveItems(itemArr);
-            }
-            fetchItems();
-        }
+  if (taskName != "") {
+    var todoList = JSON.parse(localStorage.getItem("todo-items"));
+    if (todoList == null) {
+      todoList = [];
+    }
 
-        document.getElementById("input").value = "";
-    });
+    var newTodoObj = {
+      task: taskName,
+      status: false,
+    };
+    todoList.push(newTodoObj);
+    localStorage.setItem("todo-items", JSON.stringify(todoList));
+    fetchItems();
+  }
+
+  document.getElementById("todoInput").value = "";
+});
 
 function fetchItems() {
-    const itemList = document.querySelector("ul.todo-items");
-    itemList.innerHTML = "";
-    var newItemHtml = "";
+  const itemList = document.querySelector("ul.todo-items");
+  itemList.innerHTML = "";
+  var newItemHtml = "";
 
-    try {
-        const itemStorage = localStorage.getItem("todo-items");
-        const itemArr = JSON.parse(itemStorage);
+  try {
+    const itemStorage = localStorage.getItem("todo-items");
+    const itemArr = JSON.parse(itemStorage);
 
-        for (var i = 0; i < itemArr.length; i++) {
-            var status = "";
-            if (itemArr[i].status == 1) status = "class=done";
+    for (var i = 0; i < itemArr.length; i++) {
+      var status = "";
+      if (itemArr[i].status == true) status = "class=done";
 
-            newItemHtml += `<li data-itemindex="${i}" ${status}>
+      newItemHtml += `<li data-itemindex="${i}" ${status}>
         <span class="item"> ${itemArr[i].task}</span>
         <div>
           <span class="itemComplete">        
@@ -47,61 +45,61 @@ function fetchItems() {
           </span>
         </div>
       </li>`;
-        }
+    }
 
-        itemList.innerHTML = newItemHtml;
+    itemList.innerHTML = newItemHtml;
 
-        //adding event listerners
-        var completelist = document.querySelectorAll(".itemComplete");
-        for (var i = 0; i < completelist.length; i++) {
-            completelist[i].addEventListener("click", function () {
-                var index = this.parentNode.parentNode.dataset.itemindex;
-                itemComplete(index);
-            });
-        }
+    //adding event listerners
+    var completelist = document.querySelectorAll(".itemComplete");
+    for (var i = 0; i < completelist.length; i++) {
+      completelist[i].addEventListener("click", function () {
+        var index = this.parentNode.parentNode.dataset.itemindex;
+        itemComplete(index);
+      });
+    }
 
-        var deletelist = document.querySelectorAll(".itemDelete");
-        for (var i = 0; i < deletelist.length; i++) {
-            deletelist[i].addEventListener("click", function () {
-                var index = this.parentNode.parentNode.dataset.itemindex;
-                itemDelete(index);
-            });
-        }
-    } catch (e) { }
+    var deletelist = document.querySelectorAll(".itemDelete");
+    for (var i = 0; i < deletelist.length; i++) {
+      deletelist[i].addEventListener("click", function () {
+        var index = this.parentNode.parentNode.dataset.itemindex;
+        itemDelete(index);
+      });
+    }
+  } catch (e) {}
 }
 
 function itemComplete(index) {
-    const itemStorage = localStorage.getItem("todo-items");
-    const itemArr = JSON.parse(itemStorage);
+  const itemStorage = localStorage.getItem("todo-items");
+  const itemArr = JSON.parse(itemStorage);
 
-    itemArr[index].status = 1;
+  itemArr[index].status = !itemArr[index].status;
 
-    saveItems(itemArr);
-
+  if (itemArr[index].status == false) {
+    document
+      .querySelector('ul.todo-items li[data-itemindex="' + index + '"]')
+      .classList.remove("done");
+  } else {
     document.querySelector(
-        'ul.todo-items li[data-itemindex="' + index + '"]'
+      'ul.todo-items li[data-itemindex="' + index + '"]'
     ).className = "done";
+  }
+  saveItems(itemArr);
 }
 
 function itemDelete(index) {
-    const itemStorage = localStorage.getItem("todo-items");
-    const itemArr = JSON.parse(itemStorage);
+  const itemStorage = localStorage.getItem("todo-items");
+  const itemArr = JSON.parse(itemStorage);
 
-    itemArr.splice(index, 1);
-    saveItems(itemArr);
+  itemArr.splice(index, 1);
+  saveItems(itemArr);
 
-    //   document
-    //     .querySelector('ul.todo-items li[data-itemindex="' + index + '"]')
-    //         .remove();
-
-    fetchItems();
+  fetchItems();
 }
 
 function saveItems(obj) {
-    console.log("saving item");
-    const itemJson = JSON.stringify(obj);
+  const itemJson = JSON.stringify(obj);
 
-    localStorage.setItem("todo-items", itemJson);
+  localStorage.setItem("todo-items", itemJson);
 }
 
 fetchItems();
