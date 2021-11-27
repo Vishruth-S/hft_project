@@ -1,3 +1,5 @@
+// ===============
+
 function fetchQueryString() {
     let params = (new URL(document.location)).searchParams;
     let resourceName = params.get("resourcename");

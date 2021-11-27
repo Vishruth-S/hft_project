@@ -6,41 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="global-styles.css" />
   <title>Sample extension HFT</title>
 </head>
 
 <body>
-  <h3>Resources</h3>
+  <h3>HFT Extension</h3>
 
   <div class="container">
     <div class="tab">
-      <button class="tablinks bookmark">Book Marks</li>
-        <button class="tablinks todo">Todo List</li>
-          <button class="tablinks notes">Notes</li>
-    </div>
-
-    <div class="tabcontent" id="bookmark">
-      <h2>Resources</h2>
-      <ul id="all-resources">
-
-      </ul>
-      <input type="text" id="add-new" />
-      <input type="button" id="save-new" value="Save">
-    </div>
-    <div class="tabcontent" id="todo">
-      <div class="addNewTodoitem">
-        <div id="todo-form">
-          <input type="text" id="todoInput_taskName" placeholder="todo" />
-          <input type="text" id="todoInput_company" placeholder="Company" />
-          <input type="date" id="todoInput_due" placeholder="due date" min="2015-10-28" />
-        </div>
-        <button id="todoButton">Add New Item</button>
-      </div>
-      <ul class="todo-items-list"></ul>
-    </div>
-    <div class="tabcontent" id="notes">
-      note body
+      <a href="pages/resourcesPage/index.html"><button>Resources</button></a>
+      <a href="/pages/companyReminder.html"><button>Applied Jobs</button></a>
+      <a href="pages/todoList.html"><button>Todos</button></a>
+      <a href="pages/notes.html"><button>Notes</button></a>
     </div>
   </div>
 

@@ -1,0 +1,42 @@
+
+/* ========== company reminder ========== */
+.company-reminder-card {
+    display: flex;
+    background: #00002a;
+    color: white;
+  }
+  
+  .company-reminder-item {
+    width: 100%;
+  }
+  
+  .company-reminder-card-left {
+    margin: auto 0;
+    text-align: center;
+    width: 30%;
+  }
+  
+  .company-reminder-card-right {
+    background: #00007a;
+    width: -webkit-fill-available;
+    padding: 10px;
+  }
+  
+  .company-reminder-card-right-text1 {
+    margin: 10px;
+    font-size: 24px;
+  }
+  
+  .company-reminder-card-right-text2 {
+    margin: 10px;
+    font-size: 17px;
+  }
+  
+  .company-reminder-list {
+    list-style: none;
+    padding-left: 0px;
+  }
+  
+  .company-delete-icon {
+    font-size: 22px;
+  }
