@@ -47,6 +47,27 @@ function calcRemainingTime(end_time) {
     }
 }
 
+function dateName(date) {
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const d = new Date(date);
+  let x = d.getDay() + " " + monthNames[d.getMonth()] + " " + d.getFullYear();
+  console.log(monthNames[d.getMonth()]);
+  return x;
+}
 //adding new TODO item
 document.getElementById("todoButton").addEventListener("click", function () {
     document.getElementById("todo-form").style.display = "block";
@@ -107,7 +128,7 @@ function fetchItems() {
                           </span>
                       </div>
                       <div>
-                          <span>${todo.due}</span>
+                          <span>${dateName(todo.due)}</span>
                       </div>
                   </div>
                   <div class="company-reminder-card-right">

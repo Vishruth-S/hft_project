@@ -1,70 +1,75 @@
 //adding new note item
 document.getElementById("noteButton").addEventListener("click", function () {
-    const note = document.getElementById("noteInput").value;
+  const note = document.getElementById("noteInput").value;
+  const title = document.getElementById("noteTitle").value;
 
-    if (note != "") {
-        var noteList = JSON.parse(localStorage.getItem("note-list"));
-        if (noteList == null) {
-            noteList = [];
-        }
-        var newNote = {
-            note: note,
-        };
-        noteList.push(newNote);
-        localStorage.setItem("note-list", JSON.stringify(noteList));
-        fetchNoteItems();
+  if (note != "" && title != "") {
+    var noteList = JSON.parse(localStorage.getItem("note-list"));
+    if (noteList == null) {
+      noteList = [];
     }
+    var newNote = {
+      title: title,
+      note: note,
+    };
+    noteList.push(newNote);
+    localStorage.setItem("note-list", JSON.stringify(noteList));
+    fetchNoteItems();
+  }
 
-    document.getElementById("noteInput").value = "";
+  document.getElementById("noteInput").value = "";
+  document.getElementById("noteTitle").value = "";
 });
 
 //fetches all note items from local storage
 function fetchNoteItems() {
-    var notesList = JSON.parse(localStorage.getItem("note-list"));
-    if (notesList == null) {
-        notesList = [];
-    }
-    // add to list
-    let list = document.querySelector("ul.note-list");
-    list.innerHTML = "";
-    var newItemHTML = "";
-    notesList.forEach((noteitem, i) => {
-        newItemHTML += `<li data-itemindex="${i}" >
-          <p class="item"> ${noteitem.note}</p> 
-          <span class="NoteitemDelete">
-            <span class="material-icons">delete</span>
-          </span>
-        </li>`;
+  var notesList = JSON.parse(localStorage.getItem("note-list"));
+  if (notesList == null) {
+    notesList = [];
+  }
+  // add to list
+  let list = document.querySelector("ul.note-list");
+  list.innerHTML = "";
+  var newItemHTML = "";
+  notesList.forEach((noteitem, i) => {
+    newItemHTML += `<li data-itemindex="${i}" id="noteli">
+      <div>
+        <p class="item"> ${noteitem.title}</p> 
+        <p class="item"> ${noteitem.note}</p>
+      </div>
+      <span class="NoteitemDelete">
+        <span class="material-icons">delete</span>
+      </span>
+    </li>`;
+  });
+
+  list.innerHTML = newItemHTML;
+
+  //adding event listerners to save, delte buttons
+  var deletelist = document.querySelectorAll(".NoteitemDelete");
+  for (var i = 0; i < deletelist.length; i++) {
+    deletelist[i].addEventListener("click", function () {
+      var index = this.parentNode.parentNode.dataset.itemindex;
+      itemDelete(index);
     });
-
-    list.innerHTML = newItemHTML;
-
-    //adding event listerners to save, delte buttons
-    var deletelist = document.querySelectorAll(".NoteitemDelete");
-    for (var i = 0; i < deletelist.length; i++) {
-        deletelist[i].addEventListener("click", function () {
-            var index = this.parentNode.parentNode.dataset.itemindex;
-            itemDelete(index, "note-list");
-        });
-    }
+  }
 }
 
 //function to handle onclick event of delete button
-function itemDelete(index, storageName) {
-    const itemStorage = localStorage.getItem(storageName);
-    const itemArr = JSON.parse(itemStorage);
+function itemDelete(index) {
+  const itemStorage = localStorage.getItem("note-list");
+  const itemArr = JSON.parse(itemStorage);
 
-    itemArr.splice(index, 1);
-    saveItems(itemArr, storageName);
+  itemArr.splice(index, 1);
+  saveItems(itemArr);
 
-    if (storageName == "note-list") fetchNoteItems();
-    else fetchItems();
+  fetchNoteItems();
 }
 
-function saveItems(obj, storageName) {
-    const itemJson = JSON.stringify(obj);
+function saveItems(obj) {
+  const itemJson = JSON.stringify(obj);
 
-    localStorage.setItem(storageName, itemJson);
+  localStorage.setItem("note-list", itemJson);
 }
 
 fetchNoteItems();
