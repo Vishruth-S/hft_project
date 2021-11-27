@@ -46,7 +46,8 @@ li div .tick {
   margin-right: 5px;
 }
 li div .itemComplete,
-li div .itemDelete {
+li div .itemDelete,
+.NoteitemDelete {
   cursor: pointer;
 }
 li.done .item {
@@ -55,3 +56,7 @@ li.done .item {
 .addNewTodoitem button {
   cursor: pointer;
 }
+/* #noteInput {
+  height: 50px;
+  width: 200px;
+} */

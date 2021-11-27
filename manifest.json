@@ -1,15 +1,13 @@
 {
-    "name": "Sample extension hft",
-    "version": "0.0.1",
-    "manifest_version": 2,
-    "browser_action": {
-        "default_popup": "popup.html",
-        "default_icon": "temp_logo.png"
-    },
-    "icons": {
-        "128": "temp_logo.png"
-    },
-    "permissions": [
-        "activeTab"
-    ]
+  "name": "OneStopJob",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "temp_logo.png"
+  },
+  "icons": {
+    "128": "temp_logo.png"
+  },
+  "permissions": ["activeTab"]
 }

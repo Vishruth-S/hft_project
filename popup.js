@@ -31,13 +31,10 @@ function calcRemainingTime(end_time) {
   let curr = new Date();
   let t = end - curr;
 
-  console.log(end - curr);
-
   if (t >= 0) {
     let days = Math.floor(t / (1000 * 60 * 60 * 24));
     let hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let mins = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-    console.log(days, hours, mins);
     let obj = {
       d: days,
       h: hours,
@@ -54,7 +51,7 @@ document.getElementById("todoButton").addEventListener("click", function () {
   const company = document.getElementById("todoInput_company").value;
   const due = document.getElementById("todoInput_due").value;
 
-  if (taskName != "") {
+  if (taskName != "" && company != "" && due != "") {
     var todoList = JSON.parse(localStorage.getItem("todo-items-list"));
     if (todoList == null) {
       todoList = [];
@@ -126,12 +123,12 @@ function fetchItems() {
   for (var i = 0; i < deletelist.length; i++) {
     deletelist[i].addEventListener("click", function () {
       var index = this.parentNode.parentNode.dataset.itemindex;
-      itemDelete(index);
+      itemDelete(index, "todo-items-list");
     });
   }
 }
 
-//function to handle onclick event of save/done button
+//function to handle onclick event of done button in todolist
 function itemComplete(index) {
   const itemStorage = localStorage.getItem("todo-items-list");
   const itemArr = JSON.parse(itemStorage);
@@ -143,27 +140,6 @@ function itemComplete(index) {
   document.querySelector(
     'ul.todo-items-list li[data-itemindex="' + index + '"]'
   ).className = "done";
-}
-
-//function to handle onclick event of delete button
-function itemDelete(index) {
-  const itemStorage = localStorage.getItem("todo-items-list");
-  const itemArr = JSON.parse(itemStorage);
-
-  itemArr.splice(index, 1);
-  saveItems(itemArr);
-
-  //   document
-  //     .querySelector('ul.todo-items-list li[data-itemindex="' + index + '"]')
-  //         .remove();
-
-  fetchItems();
-}
-
-function saveItems(obj) {
-  const itemJson = JSON.stringify(obj);
-
-  localStorage.setItem("todo-items-list", itemJson);
 }
 
 fetchItems();
@@ -213,3 +189,76 @@ document
   });
 
 fetchAll();
+
+//---------------------------NOTES---------------------------------//
+
+//adding new note item
+document.getElementById("noteButton").addEventListener("click", function () {
+  const note = document.getElementById("noteInput").value;
+
+  if (note != "") {
+    var noteList = JSON.parse(localStorage.getItem("note-list"));
+    if (noteList == null) {
+      noteList = [];
+    }
+    var newNote = {
+      note: note,
+    };
+    noteList.push(newNote);
+    localStorage.setItem("note-list", JSON.stringify(noteList));
+    fetchNoteItems();
+  }
+
+  document.getElementById("noteInput").value = "";
+});
+
+//fetches all note items from local storage
+function fetchNoteItems() {
+  var notesList = JSON.parse(localStorage.getItem("note-list"));
+  if (notesList == null) {
+    notesList = [];
+  }
+  // add to list
+  let list = document.querySelector("ul.note-list");
+  list.innerHTML = "";
+  var newItemHTML = "";
+  notesList.forEach((noteitem, i) => {
+    newItemHTML += `<li data-itemindex="${i}" >
+        <p class="item"> ${noteitem.note}</p> 
+        <span class="NoteitemDelete">
+          <span class="material-icons">delete</span>
+        </span>
+      </li>`;
+  });
+
+  list.innerHTML = newItemHTML;
+
+  //adding event listerners to save, delte buttons
+  var deletelist = document.querySelectorAll(".NoteitemDelete");
+  for (var i = 0; i < deletelist.length; i++) {
+    deletelist[i].addEventListener("click", function () {
+      var index = this.parentNode.parentNode.dataset.itemindex;
+      itemDelete(index, "note-list");
+    });
+  }
+}
+
+//function to handle onclick event of delete button
+function itemDelete(index, storageName) {
+  const itemStorage = localStorage.getItem(storageName);
+  const itemArr = JSON.parse(itemStorage);
+
+  itemArr.splice(index, 1);
+  saveItems(itemArr, storageName);
+
+  if (storageName == "note-list") fetchNoteItems();
+  else fetchItems();
+}
+
+function saveItems(obj, storageName) {
+  const itemJson = JSON.stringify(obj);
+
+  localStorage.setItem(storageName, itemJson);
+}
+
+fetchNoteItems();
