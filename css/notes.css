@@ -1,0 +1,70 @@
+#notes{
+    margin: 1em;
+}
+ul,li{
+  list-style:none;
+}
+ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.wrap{
+  text-decoration:none;
+  color:#000;
+  background:#f89616;
+  display:block;
+  min-height:10em;
+  width:10em;
+  padding:1em;
+  position: relative;
+  padding-bottom: 3em;
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+}
+ul li{
+  margin:1em;
+}
+
+.NoteitemDelete{
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    padding-top: 3em;
+    transform: translate(-50%, -50%);
+    cursor:pointer;
+}
+
+ul li {
+    transform: rotate(-5deg);
+  }
+
+  ul li:nth-child(even) {
+    transform:rotate(3deg);
+    position:relative;
+    top:5px;
+  }
+  ul li:nth-child(3n) {
+    transform:rotate(-2deg);
+    position:relative;
+    top:-5px;
+  }
+  ul li:nth-child(5n){
+    transform:rotate(4deg);
+    position:relative;
+    top:-10px;
+  }
+
+  #noteButton{
+    border: none;
+    height: 32px;
+    margin-bottom:1em; 
+    background: #f89616;
+    color: white;
+    margin-left:auto;
+    margin-right: auto;
+    border-radius: 5px;
+  }
+
+  .notes-heading{
+    text-align: center;
+  }

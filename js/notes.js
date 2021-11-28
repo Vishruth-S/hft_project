@@ -32,14 +32,17 @@ function fetchNoteItems() {
   list.innerHTML = "";
   var newItemHTML = "";
   notesList.forEach((noteitem, i) => {
-    newItemHTML += `<li data-itemindex="${i}" id="noteli">
-      <div>
-        <p class="item"> ${noteitem.title}</p> 
+    newItemHTML += `<li data-itemindex="${i}" id="noteli" >
+    <div class="wrap">
+      <div >
+      <h2 class="item"> ${noteitem.title}</h2> 
         <p class="item"> ${noteitem.note}</p>
-      </div>
-      <span class="NoteitemDelete">
-        <span class="material-icons">delete</span>
-      </span>
+        </div>
+        <span class="NoteitemDelete">
+      <span class="material-icons">delete</span>
+    </span>
+  
+</div>
     </li>`;
   });
 
