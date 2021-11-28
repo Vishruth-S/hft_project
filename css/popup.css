@@ -26,22 +26,6 @@
     color: #f89616;
 }
 
-.navbar {
-    background-color: #f89616;
-    /* height: 50px; */
-    color: white;
-}
-
-.navbar-brand {
-    margin: 0;
-    font-size: 20px;
-}
-
-.nav-logo-text-img {
-    width: 150px;
-    margin-left: 10px;
-}
-
 .home-tabs {
     width: 90%;
     margin: 10px;

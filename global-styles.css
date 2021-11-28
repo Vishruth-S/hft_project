@@ -3,3 +3,30 @@ body {
   height: 200px;
   margin: 0;
 }
+
+
+.navbar {
+  background-color: #f89616;
+  /* height: 50px; */
+  color: white;
+}
+
+.navbar-brand {
+  margin: 0;
+  font-size: 20px;
+}
+
+.nav-logo-img {
+  width: 59px;
+  margin-left: 10px;
+}
+
+.nav-logo-text-img {
+  width: 130px;
+}
+
+.nav-home-icon {
+  font-size: 30px !important;
+  padding: 5px;
+  color: white;
+}
