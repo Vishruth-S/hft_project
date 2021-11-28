@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/global-styles.css">
-    <link rel="stylesheet" href="/css/companyReminder.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-</head>
+    <link rel="stylesheet" href="/global-styles.css" />
+    <link rel="stylesheet" href="/css/companyReminder.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
 
-<body>
-    <a href="/popup.html">Go Home</a>
+  <body>
+    <div class="heading">
+      <a href="/popup.html"><span class="material-icons"> arrow_back </span></a>
+      <h2>Job Reminder</h2>
+    </div>
     <div id="todo">
-        <div class="addNewTodoitem">
-            <div id="todo-form">
-                <input type="text" id="todoInput_taskName" placeholder="todo" />
-                <input type="text" id="todoInput_company" placeholder="Company" />
-                <input type="date" id="todoInput_due" placeholder="due date" min="2015-10-28" />
-            </div>
-            <button id="todoButton">Add New Item</button>
-        </div>
-        <ul class="company-reminder-list">
+      <ul class="company-reminder-list"></ul>
 
-        </ul>
+      <div class="addNewTodoitem">
+        <div id="todo-form">
+          <input type="text" id="todoInput_taskName" placeholder="Position" /></br>
+          <input type="text" id="todoInput_company" placeholder="Company" /></br>
+          <input
+            type="date"
+            id="todoInput_due"
+            placeholder="due date"
+            min="2015-10-28"
+          />
+        </div>
+        <button id="todoButton">
+          <span>+</span>
+        </button>
+      </div>
     </div>
     <script src="/js/companyReminder.js"></script>
-</body>
-
+  </body>
 </html>

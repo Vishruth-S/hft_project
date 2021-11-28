@@ -1,5 +1,11 @@
-//adding new item
+// document.getElementById("todoInput").style.display = "none";
 
+// document.getElementById("todoButton").addEventListener("click", function () {
+//   document.getElementById("todoInput").style.display = "block";
+//   document.getElementById("todoInput").style.transition = "all 1s";
+// });
+
+//adding new item
 document.getElementById("todoButton").addEventListener("click", function () {
   const taskName = document.getElementById("todoInput").value;
 
@@ -34,13 +40,19 @@ function fetchItems() {
       var status = "";
       if (itemArr[i].status == true) status = "class=done";
 
+      var doneIcon = status
+        ? `<span class="itemDone" id="done">
+            <span class="material-icons">check_circle_outline</span>      
+          </span>`
+        : `<span class="itemDone" id="notDone">
+            <span class="material-icons">radio_button_unchecked</span>     
+          </span>`;
+
       newItemHtml += `<li data-itemindex="${i}" ${status}>
         <span class="item"> ${itemArr[i].task}</span>
-        <div>
-          <span class="itemComplete">        
-            <span class="material-icons tick">task_alt</span>
-          </span>
-          <span class="itemDelete">
+        <div>        
+          ${doneIcon}
+          <span class="itemDelete" id="delete">
             <span class="material-icons">delete</span>
           </span>
         </div>
@@ -50,7 +62,15 @@ function fetchItems() {
     itemList.innerHTML = newItemHtml;
 
     //adding event listerners
-    var completelist = document.querySelectorAll(".itemComplete");
+    var completelist = document.querySelectorAll(".itemDone");
+    for (var i = 0; i < completelist.length; i++) {
+      completelist[i].addEventListener("click", function () {
+        var index = this.parentNode.parentNode.dataset.itemindex;
+        itemComplete(index);
+      });
+    }
+
+    var completelist = document.querySelectorAll(".itemNotDone");
     for (var i = 0; i < completelist.length; i++) {
       completelist[i].addEventListener("click", function () {
         var index = this.parentNode.parentNode.dataset.itemindex;
@@ -73,17 +93,8 @@ function itemComplete(index) {
   const itemArr = JSON.parse(itemStorage);
 
   itemArr[index].status = !itemArr[index].status;
-
-  if (itemArr[index].status == false) {
-    document
-      .querySelector('ul.todo-items li[data-itemindex="' + index + '"]')
-      .classList.remove("done");
-  } else {
-    document.querySelector(
-      'ul.todo-items li[data-itemindex="' + index + '"]'
-    ).className = "done";
-  }
   saveItems(itemArr);
+  fetchItems();
 }
 
 function itemDelete(index) {
