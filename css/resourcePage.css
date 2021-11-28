@@ -1,31 +1,49 @@
-
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(235, 235, 235, 0.534);
+}
+.heading {
+  padding: 25px 15px 15px 15px;
+  color: #f89616;
+  display: flex;
+}
+.heading a {
+  height: fit-content;
+}
+.heading a .material-icons {
+  color: #f89616;
+}
+.heading h2 {
+  font-size: 18px;
+  margin: 0 0 0 35px;
+}
 .material-icons {
-  font-size: 15px;
+  font-size: 18px;
 }
 .material-icons .tick {
   color: green !important;
 }
 ul {
   margin: 0;
-  padding: 0;
+  padding-left: 35px;
 }
 li {
-  padding: 15px;
+  padding: 0px 35px;
+  margin-top: 15px;
+  height: 60px;
+  width: 70%;
+  background-color: white;
+  border-radius: 8px;
   list-style: none;
   font-size: 15px;
-  border-bottom: 1px solid grey;
-  /* display: flex; */
-  /* justify-content: space-between; */
-}
-li div .tick {
-  margin-right: 5px;
+  border-radius: 50px;
+  display: flex;
 }
 li div .itemComplete,
 li div .itemDelete {
   cursor: pointer;
-}
-li.done .item {
-  text-decoration: line-through;
 }
 .addNewTodoitem button {
   cursor: pointer;
@@ -36,19 +54,26 @@ li.done .item {
 }
 
 .resources-folder-icon {
-  font-size: 35px;
+  flex: 0.13;
+  font-size: 24px;
   color: #f89616;
+  margin: auto 0;
 }
-
+.name {
+  flex: 0.77;
+  margin: auto 0;
+}
 .resources-link {
   text-decoration: none;
   color: black;
-  font-size: 23px;
+  font-size: 18px;
 }
-
+.delete-resources {
+  flex: 0.1;
+  margin: auto 0;
+}
 .resources-delete-icon {
-  font-size: 21px;
-  margin-top: 10px;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -58,22 +83,73 @@ li.done .item {
 }
 
 .resources-item:hover {
-  background-color: #efefef;
+  cursor: pointer;
 }
-
+#resource-title {
+  text-transform: uppercase;
+}
 .input-div {
-  background-color: #efefef;
+  padding-bottom: 30px;
+  padding-left: 35px;
+}
+.input-div h3 {
+  font-size: 14px;
+  font-weight: 200;
+  margin-left: 25%;
 }
 
-.resources-input {
-  margin: 10px;
+.resources-input,
+#add-new-resource {
+  margin: auto 0;
+  padding-left: 20px;
+  height: 35px;
+  width: 62%;
+  border: 1.5px solid rgba(128, 128, 128, 0.308);
+  border-radius: 30px;
+}
+.resources-input,
+#add-new-resource:focus {
+  outline: none;
+  border: 1.5px solid rgba(128, 128, 128, 0.603) !important;
+}
+#add-new-resource {
+  font-size: 13px;
 }
 
 .resources-button {
   border: none;
+  margin-left: 10px;
   height: 32px;
   width: 60px;
   background: #f89616;
   color: white;
   border-radius: 5px;
+}
+#insideFolder {
+  margin-bottom: 20px;
+}
+#insideFolder .webIcon {
+  flex: 0.13;
+  margin: auto 0;
+}
+#insideFolder .webName {
+  flex: 0.77;
+  margin: auto 0;
+}
+#insideFolder .webName span a {
+  font-size: 14px;
+}
+#insideFolder .item-delete {
+  flex: 0.1;
+  margin: auto 0;
+}
+#insideFolder .item-delete .material-icons {
+  font-size: 18px;
+}
+.folderForm {
+  margin-left: 35px;
+  padding-bottom: 20px;
+}
+#add-new-resource {
+  width: 62%;
 }
