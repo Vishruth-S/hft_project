@@ -5,6 +5,12 @@ function fetchQueryString() {
     let resourceName = params.get("resourcename");
     document.getElementById('resource-title').innerText = resourceName
     fetchResources(resourceName)
+    chrome.windows.getCurrent(w => {
+        chrome.tabs.query({ active: true, windowId: w.id }, tabs => {
+            let title = tabs[0].title
+            document.getElementById('add-new-resource').value = title
+        })
+    })
 }
 
 function fetchResources(resourceName) {
@@ -18,9 +24,22 @@ function fetchResources(resourceName) {
     var newItemHTML = "";
     retrievedData.forEach((el, idx) => {
         newItemHTML +=
-            `<li data-itemindex=${idx}>
-            <span><a href=${el.url}>${el.name}</a></span>
-            <span class="item-delete">delete</span>
+            `<li data-itemindex=${idx} class="resources-item">
+            <div class="row">
+                <div class="col-2 text-end">
+                    <img src=${el.favicon} />
+                </div>
+                <div class="col-8">
+                    <span><a href=${el.url} class="resources-link" target="_blank">${el.name}</a></span>
+                </div>
+                <div class="col-2">
+                    <span class="item-delete">
+                        <span class="material-icons">
+                            delete
+                        </span>
+                    </span>
+                </div>
+            </div>
             </li>`
     });
     list.innerHTML = newItemHTML
@@ -53,13 +72,15 @@ document.getElementById('save-new-resource').onclick = () => {
     chrome.windows.getCurrent(w => {
         chrome.tabs.query({ active: true, windowId: w.id }, tabs => {
             let url = tabs[0].url;
+            let favicon = tabs[0].favIconUrl
             let title = tabs[0].title
             let nameInput = document.getElementById('add-new-resource')
             let name = nameInput.value
             nameInput.value = ''
             let obj = {
                 name: name.length > 0 ? name : title,
-                url: url
+                url: url,
+                favicon: favicon
             }
             let params = (new URL(document.location)).searchParams;
             let resourceName = params.get("resourcename");

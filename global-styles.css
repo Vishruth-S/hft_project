@@ -1,26 +1,32 @@
 body {
   width: 400px;
   height: 200px;
+  margin: 0;
 }
 
-.tab {
-  display: block;
-}
-.tab button {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-}
-.tab button:hover {
-  background-color: #ddd;
-}
-.tab button.active {
-  background-color: #ccc;
-}
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
+
+.navbar {
+  background-color: #f89616;
+  /* height: 50px; */
+  color: white;
 }
 
+.navbar-brand {
+  margin: 0;
+  font-size: 20px;
+}
+
+.nav-logo-img {
+  width: 59px;
+  margin-left: 10px;
+}
+
+.nav-logo-text-img {
+  width: 130px;
+}
+
+.nav-home-icon {
+  font-size: 30px !important;
+  padding: 5px;
+  color: white;
+}

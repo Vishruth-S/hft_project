@@ -14,8 +14,8 @@ li {
   list-style: none;
   font-size: 15px;
   border-bottom: 1px solid grey;
-  display: flex;
-  justify-content: space-between;
+  /* display: flex; */
+  /* justify-content: space-between; */
 }
 li div .tick {
   margin-right: 5px;
@@ -29,4 +29,51 @@ li.done .item {
 }
 .addNewTodoitem button {
   cursor: pointer;
+}
+
+.resources-folder {
+  text-align: center;
+}
+
+.resources-folder-icon {
+  font-size: 35px;
+  color: #f89616;
+}
+
+.resources-link {
+  text-decoration: none;
+  color: black;
+  font-size: 23px;
+}
+
+.resources-delete-icon {
+  font-size: 21px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.resources-header {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.resources-item:hover {
+  background-color: #efefef;
+}
+
+.input-div {
+  background-color: #efefef;
+}
+
+.resources-input {
+  margin: 10px;
+}
+
+.resources-button {
+  border: none;
+  height: 32px;
+  width: 60px;
+  background: #f89616;
+  color: white;
+  border-radius: 5px;
 }

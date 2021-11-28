@@ -14,9 +14,28 @@ function fetchAll() {
     var newItemHTML = ""
     for (const [key, value] of Object.entries(retrievedData)) {
         newItemHTML +=
-            `<li id=${key}>
-                <span><a href='/pages/resourcesPage/resourcesPage.html?resourcename=${key}'>${key}</a></span>
-                <span class="delete-resources">delete</span>
+            `<li id=${key} class="resources-item">
+            <div class="row">
+                <div class="col-3 resources-folder">
+                    <span class="material-icons resources-folder-icon">
+                        folder
+                    </span>
+                </div>
+                <div class="col-6">
+                    <span>
+                        <a href='/pages/resourcesPage/resourcesPage.html?resourcename=${key}' class="resources-link">
+                            <p>${key}</p>
+                        </a>
+                    </span>
+                </div>
+                <div class="col-3">
+                    <span class="delete-resources">          
+                        <span class="material-icons resources-delete-icon">
+                            delete
+                        </span>
+                    </span>
+                </div>
+            </div>
             </li>`
     }
     list.innerHTML = newItemHTML
