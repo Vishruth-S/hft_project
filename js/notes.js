@@ -1,5 +1,14 @@
+document.getElementById("form").style.display = "none";
+
 //adding new note item
 document.getElementById("noteButton").addEventListener("click", function () {
+  var x = document.getElementById("form");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+
   const note = document.getElementById("noteInput").value;
   const title = document.getElementById("noteTitle").value;
 
@@ -33,16 +42,13 @@ function fetchNoteItems() {
   var newItemHTML = "";
   notesList.forEach((noteitem, i) => {
     newItemHTML += `<li data-itemindex="${i}" id="noteli" >
-    <div class="wrap">
-      <div >
-      <h2 class="item"> ${noteitem.title}</h2> 
-        <p class="item"> ${noteitem.note}</p>
+        <div >
+          <h2 class="item"> ${noteitem.title}</h2> 
+          <p class="item"> ${noteitem.note}</p>
         </div>
         <span class="NoteitemDelete">
-      <span class="material-icons">delete</span>
-    </span>
-  
-</div>
+          <span class="material-icons">delete</span>
+        </span>  
     </li>`;
   });
 
