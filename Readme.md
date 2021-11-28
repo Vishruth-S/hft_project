@@ -1,5 +1,5 @@
-## Hack for tomorrow Project : <img src="assets/logo-text.png" style="height:30px;"/> 
-
+## Hack for tomorrow -Team: Surviving with Google
+###  Project <img src="assets/logo-text.png" style="height:30px;"/> 
 Prepo is a chrome extension that aims to ease the process of preparing for placements and internships by providing a one-stop place to easily organize resources, keep track of job applications, add tasks and more.
 
 ## Features
@@ -19,3 +19,5 @@ Prepo is a chrome extension that aims to ease the process of preparing for place
 3) Enable Developer mode on top right
 4) Click on "Load unpacked" and choose the cloned folder
 5) Enable the extension
+
+
