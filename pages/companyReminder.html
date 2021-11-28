@@ -1,46 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/global-styles.css" />
-    <link rel="stylesheet" href="/css/companyReminder.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-  </head>
 
-  <body>
-    <div class="heading">
-      <a href="/popup.html"><span class="material-icons"> arrow_back </span></a>
-      <h2>Job Reminder</h2>
-    </div>
-    <div id="todo">
-      <ul class="company-reminder-list"></ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/global-styles.css" />
+  <link rel="stylesheet" href="/css/companyReminder.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+</head>
 
-      <div class="addNewTodoitem">
-        <div id="todo-form">
-          <input type="text" id="todoInput_taskName" placeholder="Position" /></br>
-          <input type="text" id="todoInput_company" placeholder="Company" /></br>
-          <input
-            type="date"
-            id="todoInput_due"
-            placeholder="due date"
-            min="2015-10-28"
-          />
-        </div>
-        <button id="todoButton">
-          <span>+</span>
-        </button>
+<body>
+  <div class="heading">
+    <a href="/popup.html"><span class="material-icons"> arrow_back </span></a>
+    <h2>Job Reminder</h2>
+  </div>
+  <div id="todo">
+    <ul class="company-reminder-list"></ul>
+
+    <div class="addNewTodoitem">
+      <div id="todo-form">
+        <input type="text" id="todoInput_taskName" placeholder="Position" /></br>
+        <input type="text" id="todoInput_company" placeholder="Company" /></br>
+        <input type="date" id="todoInput_due" placeholder="due date" min="2015-10-28" />
       </div>
+      <button id="todoButton">
+        <span>+</span>
+      </button>
     </div>
-    <script src="/js/companyReminder.js"></script>
-  </body>
+  </div>
+  <script src="/js/companyReminder.js"></script>
+</body>
+
 </html>

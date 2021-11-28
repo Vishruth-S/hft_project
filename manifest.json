@@ -1,7 +1,7 @@
 {
     "name": "Prepo",
     "version": "0.0.1",
-    "description": "Your companion for preparing for job interviews",
+    "description": "Your companion for preparing for internships and placements",
     "manifest_version": 2,
     "browser_action": {
         "default_popup": "popup.html",
@@ -11,6 +11,14 @@
         "128": "temp_logo.png"
     },
     "permissions": [
-        "activeTab"
-    ]
+        "activeTab",
+        "notifications",
+        "tabs"
+    ],
+    "background": {
+        "scripts": [
+            "js/background.js"
+        ],
+        "persistent": false
+    }
 }

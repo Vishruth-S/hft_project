@@ -21,12 +21,22 @@ document.querySelectorAll(".tablinks").forEach((element) => {
   });
 });
 
+function sendNotification(params) {
+  chrome.runtime.sendMessage('', {
+    type: 'notification',
+    options: {
+      title: params.title,
+      message: `Application at ${params.company} is due ${params.due}`,
+      iconUrl: 'temp_logo.png',
+      type: 'basic'
+    }
+  });
+}
+
 function calcRemainingTime(end_time) {
   let end = new Date(end_time);
   let curr = new Date();
   let t = end - curr;
-
-  console.log(end - curr);
 
   if (t >= 0) {
     let days = Math.floor(t / (1000 * 60 * 60 * 24));
@@ -151,7 +161,8 @@ function fetchItems() {
   var deletelist = document.querySelectorAll(".itemDelete");
   for (var i = 0; i < deletelist.length; i++) {
     deletelist[i].addEventListener("click", function () {
-      var index = this.parentNode.parentNode.dataset.itemindex;
+      var index = this.parentNode.parentNode.parentNode.dataset.itemindex;
+      console.log(index)
       todo_itemDelete(index);
     });
   }
@@ -163,7 +174,18 @@ function fetchItems() {
     "-" +
     new Date().getDate();
 }
+let keysPressed = {};
+document.addEventListener('keydown', (event) => {
+  keysPressed[event.key] = true;
 
+  if (keysPressed['Control'] && event.key == 'm') {
+    console.log("pressed")
+    sendNotification({ title: "Prepo: Reminder", company: "Google", due: "tomorrow" })
+  }
+});
+document.addEventListener('keyup', (event) => {
+  delete keysPressed[event.key];
+});
 //function to handle onclick event of save/done button
 function itemComplete(index) {
   const itemStorage = localStorage.getItem("company-reminders-list");
