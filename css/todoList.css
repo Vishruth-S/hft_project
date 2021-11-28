@@ -1,26 +1,94 @@
-
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(235, 235, 235, 0.534);
+}
+.heading {
+  padding: 25px 15px 15px 15px;
+  color: #f89616;
+  display: flex;
+}
+.heading a {
+  height: fit-content;
+}
+.heading a .material-icons {
+  color: #f89616;
+}
+.heading h2 {
+  font-size: 18px;
+  margin: 0 0 0 35px;
+}
 ul {
-    margin: 0;
-    padding: 0;
-  }
-  li {
-    padding: 15px;
-    list-style: none;
-    font-size: 15px;
-    border-bottom: 1px solid grey;
-    display: flex;
-    justify-content: space-between;
-  }
-  li div .tick {
-    margin-right: 5px;
-  }
-  li div .itemComplete,
-  li div .itemDelete {
-    cursor: pointer;
-  }
-  li.done .item {
-    text-decoration: line-through;
-  }
-  .additem button {
-    cursor: pointer;
-  }
+  margin: 0;
+  padding-left: 25px;
+}
+li {
+  padding: 15px;
+  margin-top: 15px;
+  width: 84%;
+  background-color: white;
+  border-radius: 50px;
+  list-style: none;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+li .item {
+  margin-left: 10px;
+  font-size: 14px;
+}
+li div .itemDone,
+li div .itemDelete,
+li div .itemNotDone {
+  cursor: pointer;
+}
+li div #done .material-icons {
+  color: #00e676;
+  font-size: 18px;
+}
+
+li div #notDone .material-icons {
+  color: rgba(128, 128, 128, 0.363);
+  font-size: 18px;
+}
+li.done .item {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+li div #delete .material-icons {
+  opacity: 0.8;
+  font-size: 18px;
+}
+.additem {
+  display: flex;
+  margin-top: 30px;
+  padding-bottom: 20px;
+}
+.additem button {
+  margin-left: 20px;
+  align-self: flex-end;
+  cursor: pointer;
+  border: none;
+  background-color: #f89616;
+  color: white;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+}
+.additem button span {
+  font-size: 30px;
+}
+.additem input {
+  margin: auto 0;
+  margin-left: 20px;
+  padding-left: 20px;
+  height: 35px;
+  width: 70%;
+  border: 1.5px solid rgba(128, 128, 128, 0.308);
+  border-radius: 30px;
+}
+#todoInput:focus {
+  outline: none;
+  border: 1.5px solid rgba(128, 128, 128, 0.603) !important;
+}

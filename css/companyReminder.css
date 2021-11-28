@@ -1,42 +1,128 @@
-
-/* ========== company reminder ========== */
-.company-reminder-card {
-    display: flex;
-    background: #00002a;
-    color: white;
-  }
-  
-  .company-reminder-item {
-    width: 100%;
-  }
-  
-  .company-reminder-card-left {
-    margin: auto 0;
-    text-align: center;
-    width: 30%;
-  }
-  
-  .company-reminder-card-right {
-    background: #00007a;
-    width: -webkit-fill-available;
-    padding: 10px;
-  }
-  
-  .company-reminder-card-right-text1 {
-    margin: 10px;
-    font-size: 24px;
-  }
-  
-  .company-reminder-card-right-text2 {
-    margin: 10px;
-    font-size: 17px;
-  }
-  
-  .company-reminder-list {
-    list-style: none;
-    padding-left: 0px;
-  }
-  
-  .company-delete-icon {
-    font-size: 22px;
-  }
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(235, 235, 235, 0.534);
+}
+.heading {
+  padding: 25px 15px 15px 15px;
+  color: #f89616;
+  display: flex;
+}
+.heading a {
+  height: fit-content;
+}
+.heading a .material-icons {
+  color: #f89616;
+}
+.heading h2 {
+  font-size: 18px;
+  margin: 0 0 0 35px;
+}
+ul {
+  padding-left: 25px;
+}
+li {
+  list-style: none;
+  display: flex;
+  margin-bottom: 15px;
+}
+li .due {
+  background-color: #f89616;
+  color: white;
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  text-align: center;
+}
+li .due div {
+  width: fit-content;
+  margin: 8px auto;
+}
+li .due div #date {
+  font-size: 20px;
+}
+li .due div p {
+  margin-top: -12px;
+  font-size: 14px;
+}
+li .cardBody {
+  flex: 0.8;
+  margin-left: 15px;
+  padding: 15px 20px;
+  background-color: white;
+  border-radius: 0px 10px 10px 10px;
+}
+li .job {
+}
+li .job #position {
+  margin-top: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+li .job #compName {
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: -15px;
+}
+li .cardBody .bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -5px;
+}
+li .timeLeft {
+  font-size: 11px;
+  color: #f44336;
+  display: flex;
+}
+li .timeLeft .material-icons {
+  margin: auto 0;
+  margin-right: 4px;
+  font-size: 18px;
+}
+li .bottom .itemDelete {
+  margin: auto 0;
+  cursor: pointer;
+}
+li .bottom .itemDelete .material-icons {
+  opacity: 0.8;
+  margin: auto 0;
+  font-size: 18px;
+}
+.addNewTodoitem {
+  padding-bottom: 20px;
+}
+.addNewTodoitem button {
+  cursor: pointer;
+  border: none;
+  background-color: #f89616;
+  color: white;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  float: right;
+  margin: 0 15px 13px 0;
+}
+.addNewTodoitem button span {
+  font-size: 30px;
+}
+#todo-form {
+  background-color: white;
+  padding: 20px 20px;
+  margin: 0 50px;
+  border-radius: 10px;
+}
+#todo-form div {
+  background-color: red;
+}
+#todo-form input {
+  margin-bottom: 15px;
+  padding: 0 20px;
+  height: 35px;
+  width: 85%;
+  border: none;
+  border-bottom: 1.5px solid rgba(128, 128, 128, 0.308);
+}
+#todo-form input:focus {
+  outline: none;
+}

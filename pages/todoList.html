@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/global-styles.css" />
     <link rel="stylesheet" href="/css/todoList.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -14,13 +20,17 @@
   </head>
 
   <body>
-    <a href="/popup.html">Go Home</a>
-    <h3>Todo List</h3>
-    <div class="additem">
-      <input type="text" id="todoInput" />
-      <button id="todoButton">add item</button>
+    <div class="heading">
+      <a href="/popup.html"><span class="material-icons"> arrow_back </span></a>
+      <h2>Todo List</h2>
     </div>
     <ul class="todo-items"></ul>
+    <div class="additem">
+      <input type="text" id="todoInput" />
+      <button id="todoButton">
+        <span>+</span>
+      </button>
+    </div>
     <script src="/js/todoList.js"></script>
   </body>
 </html>
