@@ -58,7 +58,7 @@ function fetchNoteItems() {
   var deletelist = document.querySelectorAll(".NoteitemDelete");
   for (var i = 0; i < deletelist.length; i++) {
     deletelist[i].addEventListener("click", function () {
-      var index = this.parentNode.parentNode.dataset.itemindex;
+      var index = this.parentNode.dataset.itemindex;
       itemDelete(index);
     });
   }
